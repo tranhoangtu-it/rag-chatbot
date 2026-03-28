@@ -1,0 +1,77 @@
+TechFlow Inc - Customer Support Documentation
+
+GETTING STARTED
+
+Welcome to TechFlow! TechFlow is a project management and team collaboration platform designed for modern software teams. Our platform helps teams plan sprints, track issues, manage deployments, and collaborate in real-time.
+
+To get started, sign up at app.techflow.io with your work email. You will receive a verification email within 2 minutes. Click the verification link to activate your account. Once verified, you can create your first workspace and invite team members.
+
+PRICING PLANS
+
+TechFlow offers three pricing tiers:
+
+Free Plan: Up to 5 team members, 3 projects, basic sprint planning, community support. No credit card required.
+
+Pro Plan ($12/user/month, billed annually): Unlimited team members, unlimited projects, advanced analytics, priority email support, custom workflows, API access, Slack and GitHub integrations.
+
+Enterprise Plan (custom pricing): Everything in Pro plus SSO/SAML authentication, dedicated account manager, 99.9% SLA, on-premise deployment option, advanced security controls, and 24/7 phone support. Contact sales@techflow.io for a quote.
+
+All paid plans include a 14-day free trial. You can upgrade or downgrade at any time from Settings > Billing.
+
+ACCOUNT MANAGEMENT
+
+To reset your password, go to app.techflow.io/forgot-password and enter your registered email. You will receive a reset link valid for 24 hours.
+
+To change your email address, go to Settings > Profile > Email. You must verify the new email before the change takes effect.
+
+To delete your account, go to Settings > Account > Delete Account. This action is irreversible. All your data, projects, and team associations will be permanently removed after a 30-day grace period.
+
+Two-factor authentication (2FA) is available for all accounts. Enable it in Settings > Security > Two-Factor Authentication. We support authenticator apps (Google Authenticator, Authy) and SMS codes.
+
+INTEGRATIONS
+
+TechFlow integrates with popular development tools:
+
+GitHub: Connect your repositories to automatically link commits, pull requests, and issues to TechFlow tasks. Setup: Settings > Integrations > GitHub > Connect.
+
+Slack: Receive notifications about task updates, sprint changes, and mentions directly in your Slack channels. Setup: Settings > Integrations > Slack > Add to Slack.
+
+Jira: Import existing Jira projects into TechFlow with our migration tool. Supports issues, sprints, and custom fields. Setup: Settings > Integrations > Jira > Import.
+
+VS Code Extension: View and update TechFlow tasks directly from your editor. Install "TechFlow" from the VS Code marketplace.
+
+API: Full REST API available for Pro and Enterprise plans. Documentation at docs.techflow.io/api. Rate limit: 1000 requests/hour for Pro, 5000/hour for Enterprise.
+
+BILLING AND REFUNDS
+
+We accept Visa, Mastercard, American Express, and PayPal. Invoices are generated on the 1st of each month and available in Settings > Billing > Invoices.
+
+Refund Policy: We offer a full refund within 30 days of purchase if you are not satisfied. After 30 days, we provide prorated refunds for unused months on annual plans. To request a refund, email billing@techflow.io with your account details.
+
+If your payment fails, we retry automatically after 3, 7, and 14 days. Your account remains active during this period. After 14 days of failed payment, your account is downgraded to the Free plan.
+
+TROUBLESHOOTING
+
+App not loading: Clear your browser cache and cookies, then try again. TechFlow supports Chrome 90+, Firefox 88+, Safari 14+, and Edge 90+. Disable browser extensions that may interfere.
+
+Slow performance: Check your internet connection. If the issue persists, try disabling real-time collaboration in Settings > Preferences > Performance. Contact support if the problem continues.
+
+Cannot invite team members: Ensure you have admin or owner permissions. Free plan is limited to 5 members. Check that the invited email is not already associated with another TechFlow workspace.
+
+Sync issues: If tasks appear out of date, click the refresh icon in the top right corner. For persistent sync issues, log out and log back in. If the problem continues, contact support@techflow.io.
+
+CONTACT SUPPORT
+
+Email: support@techflow.io (response within 24 hours for Free, 4 hours for Pro, 1 hour for Enterprise)
+Live Chat: Available on our website Monday-Friday, 9am-6pm EST
+Phone: Enterprise customers only, 24/7 at +1-800-TECHFLOW
+Help Center: help.techflow.io with 200+ articles and video tutorials
+Community Forum: community.techflow.io for peer support and feature requests
+
+DATA AND PRIVACY
+
+TechFlow is SOC 2 Type II certified and GDPR compliant. All data is encrypted at rest (AES-256) and in transit (TLS 1.3). Data is stored in AWS US-East and EU-West regions.
+
+You can export all your data at any time from Settings > Account > Export Data. Exports are available in JSON and CSV formats. Data retention: We retain your data for 30 days after account deletion.
+
+For our full privacy policy, visit techflow.io/privacy. For data processing agreements (DPA), contact legal@techflow.io.
