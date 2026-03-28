@@ -21,3 +21,4 @@ Thumbs.db
 
 # Test
 .pytest_cache/
+test_chroma_tmp/
