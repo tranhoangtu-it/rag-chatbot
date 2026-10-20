@@ -1,8 +1,16 @@
-# RAG Customer Support Bot
+# rag-chatbot
 
-AI-powered document Q&A chatbot with source citations. Upload PDFs and get instant, accurate answers backed by your documents.
+Document Q&A chatbot that answers from your own PDFs and streams replies with source citations, with a customer-support persona and a built-in demo knowledge base.
 
-**Live Demo**: [demo-rag.yourname-ai.com](#) *(deploy to go live)*
+[![License: MIT](https://img.shields.io/github/license/tranhoangtu-it/rag-chatbot)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/tranhoangtu-it/rag-chatbot)](https://github.com/tranhoangtu-it/rag-chatbot)
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-15-000000?logo=nextdotjs&logoColor=white)
+
+## Why
+
+General-purpose LLMs answer confidently even when they have never seen your documents. This project grounds every answer in retrieved passages from files you upload, instructs the model to answer only from that context, and shows which document and chunk each answer came from. It is a compact, end-to-end reference for a RAG pipeline (ingestion, vector search, streamed generation, and a UI) in a codebase small enough to read in one sitting.
 
 ## Features
 
@@ -26,23 +34,26 @@ AI-powered document Q&A chatbot with source citations. Upload PDFs and get insta
 
 ## Architecture
 
+```mermaid
+flowchart LR
+    subgraph Ingest["POST /api/upload"]
+        A[PDF upload] --> B[Extract text<br/>PyMuPDF]
+        B --> C[Chunk<br/>500 chars / 50 overlap]
+        C --> D[Embed<br/>text-embedding-3-small]
+        D --> E[(ChromaDB<br/>cosine)]
+    end
+    subgraph Query["POST /api/chat"]
+        Q[Question] --> R[Embed query]
+        R --> S[Retrieve top-4 chunks]
+        S --> P[Build RAG prompt<br/>+ last 5 turns of memory]
+        P --> L[GPT-4o-mini]
+        L --> T[Streamed answer]
+        T --> U[Sources JSON<br/>file, chunk, distance]
+    end
+    E -.-> S
 ```
-┌─────────────────────┐         ┌──────────────────────────────┐
-│   Next.js Frontend  │  HTTP   │     FastAPI Backend           │
-│                     │────────▶│                                │
-│  Chat UI            │         │  POST /api/upload              │
-│  File Upload        │         │    → PDF parse (PyMuPDF)       │
-│  Source Citations    │         │    → Chunk (500 tokens/50 lap) │
-│  Streaming Display   │         │    → Embed (OpenAI)            │
-│                     │         │    → Store (ChromaDB)          │
-│                     │         │                                │
-│                     │◀────────│  POST /api/chat                │
-│                     │ Stream  │    → Retrieve top-k chunks     │
-│                     │         │    → Build RAG prompt           │
-│                     │         │    → Stream GPT-4o-mini reply   │
-│                     │         │    → Return source citations    │
-└─────────────────────┘         └──────────────────────────────┘
-```
+
+On startup, the demo documents in `backend/data/demo/` are chunked, embedded, and loaded into ChromaDB if the store is empty. The streamed response is plain text followed by a `<<SOURCES>>` marker and a JSON list of the retrieved chunks, which the frontend parses into citations.
 
 ## Quick Start
 
@@ -145,9 +156,8 @@ rag-chatbot/
 
 ## Key Metrics
 
-- **Answer accuracy**: ~85% on domain-specific questions with source citations
-- **Response time**: <2s for non-streaming, streaming starts in <500ms
-- **Chunk strategy**: 500-token chunks with 50-token overlap (RecursiveCharacterTextSplitter)
+- **Test suite**: 22 pytest tests (`backend/tests/`), with OpenAI calls mocked
+- **Chunk strategy**: 500-character chunks with 50-character overlap (`RecursiveCharacterTextSplitter`), top-4 retrieval (`backend/app/config.py`)
 - **Rate limiting**: 10 req/min (chat), 5 req/min (upload)
 
 ## License
